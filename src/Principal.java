@@ -5,5 +5,6 @@ public class Principal {
         System.out.println("marico el que lo lea");
         System.out.println("y el que lo vea tambien");
         System.out.println("Marico el Que lo Escribio");
+        System.out.println("muga dota ");
     }
 }
