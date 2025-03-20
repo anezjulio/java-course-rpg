@@ -1,7 +1,7 @@
 package src;
 
-import src.domain.Item;
-import src.domain.SkillType;
+import src.domain.models.Item;
+import src.domain.models.SkillType;
 
 public class Principal {
     public static void main(String[] args) {

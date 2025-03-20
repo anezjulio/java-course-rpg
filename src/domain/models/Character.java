@@ -1,4 +1,4 @@
-package src.domain;
+package src.domain.models;
 
 import java.util.List;
 
