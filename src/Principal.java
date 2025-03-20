@@ -1,10 +1,28 @@
 package src;
 
+import src.domain.Item;
+import src.domain.SkillType;
+
 public class Principal {
     public static void main(String[] args) {
-        System.out.println("marico el que lo lea");
-        System.out.println("y el que lo vea tambien");
-        System.out.println("Marico el Que lo Escribio");
-        System.out.println("muga dota ");
+
+        Item sword = new Item("sword", "normal sword", 15, 20, SkillType.DAMAGE);
+        System.out.println(
+                "name: " + sword.getName() +
+                        " description: " + sword.getDescription() +
+                        " SkillType: " + sword.getSkillType() +
+                        " OutputValue: " + sword.getOutputValue() +
+                        " remainUses: " + sword.getUseAmount());
+        sword.useItem();
+        System.out.println(
+                "name: " + sword.getName() +
+                        " description: " + sword.getDescription() +
+                        " SkillType: " + sword.getSkillType() +
+                        " OutputValue: " + sword.getOutputValue() +
+                        " remainUses: " + sword.getUseAmount());
+
+
+
+
     }
 }
