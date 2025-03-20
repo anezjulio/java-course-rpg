@@ -1,9 +1,9 @@
-package src.domain.models;
+package src.main.java.com.rpg.combat.domain.models;
 
-import java.util.List;
 
-public class Character {
 
+public class PlayerCharacter extends Character {
+    /*
     private String name;
     private String role;
     private int level;
@@ -15,5 +15,7 @@ public class Character {
     private int mpMax;
     private List<Skill> skills;
     private List<Item> items;
+    */
+    private int nextLevelExperienceRequired;
 
 }

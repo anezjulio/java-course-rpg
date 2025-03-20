@@ -1,7 +1,7 @@
-package src;
+package src.main.java.com.rpg.combat;
 
-import src.domain.models.Item;
-import src.domain.models.SkillType;
+import src.main.java.com.rpg.combat.domain.models.Item;
+import src.main.java.com.rpg.combat.domain.models.SkillType;
 
 public class Principal {
     public static void main(String[] args) {

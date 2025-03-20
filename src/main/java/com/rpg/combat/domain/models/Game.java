@@ -1,4 +1,4 @@
-package src.domain.models;
+package src.main.java.com.rpg.combat.domain.models;
 
 import java.time.LocalDateTime;
 import java.util.List;

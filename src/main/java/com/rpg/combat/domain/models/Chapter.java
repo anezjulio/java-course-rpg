@@ -1,4 +1,4 @@
-package src.domain.models;
+package src.main.java.com.rpg.combat.domain.models;
 
 public enum Chapter {
     PROLOGUE,
