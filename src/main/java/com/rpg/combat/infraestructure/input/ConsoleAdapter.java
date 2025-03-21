@@ -1,19 +1,14 @@
 package com.rpg.combat.infraestructure.input;
 
-
 import java.util.Scanner;
 
-public class ConsoleAdapter {
-//crear un metodo para leer un numero de la consola y devolver un entero con dicho numero y tiene que ser public int leeropcion
-// validar que las opciones sean entre 1 y 10, cualquier otro numero mayor o menor a estos ignorarlos
-// opcional validar que no se ingresen string o cualquier otro dato que no sea numero
-// al ocurrir un erro mostrar un mensaje que diga ingrese un valor una opcion entre 1 y 10
 
+//TODO: convertir esta clase en un singleton (patron de diseño)
+public class ConsoleAdapter {
     public static int read() {
         Scanner scanner = new Scanner(System.in);
         int numero = 0;
         boolean valido = false;
-
         while (!valido) {
             System.out.print("ingrese un valor entre 1 y 10: ");
             if (scanner.hasNextInt()) {
@@ -28,10 +23,8 @@ public class ConsoleAdapter {
                 scanner.next();
             }
         }
-
         return numero;
     }
-
 }
 
 

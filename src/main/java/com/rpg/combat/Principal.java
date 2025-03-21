@@ -1,10 +1,11 @@
 package com.rpg.combat;
 
 
+import com.rpg.combat.domain.constants.Role;
 import com.rpg.combat.domain.models.Character;
 import com.rpg.combat.domain.models.Item;
 import com.rpg.combat.domain.models.Skill;
-import com.rpg.combat.domain.models.SkillType;
+import com.rpg.combat.domain.constants.SkillType;
 import com.rpg.combat.infraestructure.input.ConsoleAdapter;
 
 import java.util.ArrayList;
@@ -27,8 +28,8 @@ public class Principal {
         skills.add(heal);
         Character mage =
                 new Character(
-                        "mage",
-                        "Warrior",
+                        "Miguel",
+                        Role.MAGE,
                         0,
                         0,
                         11,

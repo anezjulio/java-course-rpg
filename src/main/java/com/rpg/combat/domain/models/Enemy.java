@@ -1,12 +1,14 @@
 package com.rpg.combat.domain.models;
 
+import com.rpg.combat.domain.constants.Role;
+
 import java.util.List;
 
 public class Enemy extends Character {
 
     public Enemy(
             String name,
-            String role,
+            Role role,
             int level,
             int experience,
             int damage,

@@ -1,5 +1,7 @@
 package com.rpg.combat.domain.models;
 
+import com.rpg.combat.domain.constants.SkillType;
+
 public class Move {
 
     private int amount;

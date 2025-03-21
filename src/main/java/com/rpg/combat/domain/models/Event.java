@@ -1,5 +1,7 @@
 package com.rpg.combat.domain.models;
 
+import com.rpg.combat.domain.constants.Chapter;
+
 public class Event {
 
     private Chapter chapter;

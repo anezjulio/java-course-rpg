@@ -1,11 +1,13 @@
 package com.rpg.combat.domain.models;
 
+import com.rpg.combat.domain.constants.Role;
+
 import java.util.List;
 
 public class Character {
 
     private String name;
-    private String role;
+    private Role role;
     private int level;
     private int experience;
     private int damage;
@@ -16,7 +18,7 @@ public class Character {
     private List<Skill> skills;
     private List<Item> items;
 
-    public Character(String name, String role, int level, int experience, int damage, int hpCurrent, int hpMax, int mpCurrent, int mpMax, List<Skill> skills, List<Item> items) {
+    public Character(String name, Role role, int level, int experience, int damage, int hpCurrent, int hpMax, int mpCurrent, int mpMax, List<Skill> skills, List<Item> items) {
         this.name = name;
         this.role = role;
         this.level = level;
@@ -34,7 +36,7 @@ public class Character {
         return name;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 

@@ -1,5 +1,7 @@
 package com.rpg.combat.domain.models;
 
+import com.rpg.combat.domain.constants.Chapter;
+
 import java.time.LocalDateTime;
 import java.util.List;
 

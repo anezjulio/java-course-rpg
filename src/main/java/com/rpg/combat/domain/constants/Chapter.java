@@ -1,4 +1,4 @@
-package com.rpg.combat.domain.models;
+package com.rpg.combat.domain.constants;
 
 public enum Chapter {
     PROLOGUE,
