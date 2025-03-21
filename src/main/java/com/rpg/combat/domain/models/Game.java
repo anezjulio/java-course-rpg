@@ -1,4 +1,4 @@
-package src.main.java.com.rpg.combat.domain.models;
+package com.rpg.combat.domain.models;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,4 +11,5 @@ public class Game {
     private Chapter chapter;
     private List<Event> eventRecord;
     private Score score;
+
 }

@@ -1,4 +1,4 @@
-package src.main.java.com.rpg.combat.domain.services;
+package com.rpg.combat.domain.services;
 
 public class BattleService {
     // logica del combate por turno

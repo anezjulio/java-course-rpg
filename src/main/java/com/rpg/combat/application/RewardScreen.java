@@ -1,4 +1,4 @@
-package src.main.java.com.rpg.combat.application;
+package com.rpg.combat.application;
 
 public class RewardScreen {
 }

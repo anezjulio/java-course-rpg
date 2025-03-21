@@ -1,17 +1,17 @@
-package src.main.java.com.rpg.combat.domain.models;
+package com.rpg.combat.domain.models;
 
 public class Move {
 
-    private int outputValue;
+    private int amount;
     private SkillType skillType;
 
-    public Move(int outputValue, SkillType skillType) {
-        this.outputValue = outputValue;
+    public Move(int amount, SkillType skillType) {
+        this.amount = amount;
         this.skillType = skillType;
     }
 
-    public int getOutputValue() {
-        return outputValue;
+    public int getAmount() {
+        return amount;
     }
 
     public SkillType getSkillType() {

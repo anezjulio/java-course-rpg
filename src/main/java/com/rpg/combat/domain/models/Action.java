@@ -1,4 +1,4 @@
-package src.main.java.com.rpg.combat.domain.models;
+package com.rpg.combat.domain.models;
 
 public class Action {
 
@@ -9,6 +9,26 @@ public class Action {
     private String message;
     private Character target;
     private Move move;
+
+    public Action(String message,Character target,Move move) {
+        this.message = message;
+        this.target = target;
+        this.move = move;
+    }
+
+
+    public String getCharacter() {
+        String Character = "";
+        return Character;
+    }
+    public Move getMove() {
+        return move;
+    }
+
+    public void setMove(Move move) {
+        this.move = move;
+    }
+
 
     // ejecutar accion
     /*

@@ -1,4 +1,4 @@
-package src.main.java.com.rpg.combat.domain.models;
+package com.rpg.combat.domain.models;
 
 public class Item extends Move{
 
@@ -13,13 +13,10 @@ public class Item extends Move{
         this.useAmount = useAmount;
     }
 
-    public int getOutputValue() {
-        return super.getOutputValue();
-    }
+    public int getAmount() {return super.getAmount();}
 
-    public SkillType getSkillType() {
-        return super.getSkillType();
-    }
+    public SkillType getSkillType() {return super.getSkillType();}
+
 
     public String getName() {
         return name;

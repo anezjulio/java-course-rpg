@@ -1,17 +1,23 @@
-package src.main.java.com.rpg.combat.domain.models;
+package com.rpg.combat.domain.models;
+
+import java.util.List;
 
 public class Enemy extends Character {
-    /*
-    private String name;
-    private String role;
-    private int level;
-    private int experience;
-    private int damage;
-    private int hpCurrent;
-    private int hpMax;
-    private int mpCurrent;
-    private int mpMax;
-    private List<Skill> skills;
-    private List<Item> items;
-*/
+
+    public Enemy(
+            String name,
+            String role,
+            int level,
+            int experience,
+            int damage,
+            int hpCurrent,
+            int hpMax,
+            int mpCurrent,
+            int mpMax,
+            List<Skill> skills,
+            List<Item> items
+    ) {
+        super(name, role, level, experience, damage, hpCurrent, hpMax, mpCurrent, mpMax, skills, items);
+    }
+
 }
