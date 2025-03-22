@@ -10,7 +10,7 @@ public class ConsoleAdapter {
         int numero = 0;
         boolean valido = false;
         while (!valido) {
-            System.out.print("ingrese un valor entre 1 y 10: ");
+//            System.out.print("ingrese un valor entre 1 y 10: ");
             if (scanner.hasNextInt()) {
                 numero = scanner.nextInt();
                 if (numero >= 1 && numero <= 10) {
@@ -19,7 +19,7 @@ public class ConsoleAdapter {
                     System.out.println("intente de nuevo.");
                 }
             } else {
-                System.out.println("datos no validos ingrese un número entre 1 y 10.");
+//          System.out.println("datos no validos ingrese un número entre 1 y 10.");
                 scanner.next();
             }
         }

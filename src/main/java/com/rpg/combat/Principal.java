@@ -1,6 +1,7 @@
 package com.rpg.combat;
 
 
+import com.rpg.combat.application.screen.MenuScreen;
 import com.rpg.combat.domain.constants.Role;
 import com.rpg.combat.domain.models.Character;
 import com.rpg.combat.domain.models.Item;
@@ -42,39 +43,40 @@ public class Principal {
                 );
         //Action Damage = new Action("daño hecho 20",
 
-        System.out.println(
-                "name: " + sword.getName() +
-                        " description: " + sword.getDescription() +
-                        " SkillType: " + sword.getSkillType() +
-                        " OutputValue: " + sword.getAmount() +
-                        " remainUses: " + sword.getUseAmount());
-        sword.useItem();
-        System.out.println(
-                "name: " + sword.getName() +
-                        " description: " + sword.getDescription() +
-                        " SkillType: " + sword.getSkillType() +
-                        " OutputValue: " + sword.getAmount() +
-                        " remainUses: " + sword.getUseAmount());
+//        System.out.println(
+//                "name: " + sword.getName() +
+//                        " description: " + sword.getDescription() +
+//                        " SkillType: " + sword.getSkillType() +
+//                        " OutputValue: " + sword.getAmount() +
+//                        " remainUses: " + sword.getUseAmount());
+//        sword.useItem();
+//        System.out.println(
+//                "name: " + sword.getName() +
+//                        " description: " + sword.getDescription() +
+//                        " SkillType: " + sword.getSkillType() +
+//                        " OutputValue: " + sword.getAmount() +
+//                        " remainUses: " + sword.getUseAmount());
+//
+//
+//        System.out.println(
+//                "name: " + dagger.getName() +
+//                        " description: " + dagger.getDescription() +
+//                        " SkillType: " + dagger.getSkillType() +
+//                        " OutputValue: " + dagger.getAmount() +
+//                        " remainUses: " + dagger.getUseAmount());
+//        dagger.useItem();
+//        System.out.println(
+//                "name: " + dagger.getName() +
+//                        " description: " + dagger.getDescription() +
+//                        " SkillType: " + dagger.getSkillType() +
+//                        " OutputValue: " + dagger.getAmount() +
+//                        " remainUses: " + dagger.getUseAmount());
 
 
-        System.out.println(
-                "name: " + dagger.getName() +
-                        " description: " + dagger.getDescription() +
-                        " SkillType: " + dagger.getSkillType() +
-                        " OutputValue: " + dagger.getAmount() +
-                        " remainUses: " + dagger.getUseAmount());
-        dagger.useItem();
-        System.out.println(
-                "name: " + dagger.getName() +
-                        " description: " + dagger.getDescription() +
-                        " SkillType: " + dagger.getSkillType() +
-                        " OutputValue: " + dagger.getAmount() +
-                        " remainUses: " + dagger.getUseAmount());
+//        int numero = ConsoleAdapter.read();
+//        System.out.println("Número ingresado: " + numero);
 
-
-        int numero = ConsoleAdapter.read();
-        System.out.println("Número ingresado: " + numero);
-
-
+        MenuScreen menuScreen = new MenuScreen();
+        menuScreen.show();
     }
 }
