@@ -25,4 +25,24 @@ public class MenuScreen implements Screen{
 
         ConsoleAdapter.read();
     }
+
+    @Override
+    public String textForScreen() {
+        return null;
+    }
+
+    @Override
+    public String dataForScreen() {
+        return null;
+    }
+
+    @Override
+    public void loadScreen() {
+
+    }
+
+    @Override
+    public void nextScreen() {
+
+    }
 }

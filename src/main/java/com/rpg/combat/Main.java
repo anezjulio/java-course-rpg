@@ -3,17 +3,18 @@ package com.rpg.combat;
 
 import com.rpg.combat.application.screen.MenuScreen;
 import com.rpg.combat.domain.constants.Role;
-import com.rpg.combat.domain.models.Character;
-import com.rpg.combat.domain.models.Item;
-import com.rpg.combat.domain.models.Skill;
 import com.rpg.combat.domain.constants.SkillType;
-import com.rpg.combat.infraestructure.input.ConsoleAdapter;
+import com.rpg.combat.domain.models.Item;
+import com.rpg.combat.domain.models.Character;
+import com.rpg.combat.domain.models.Skill;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Principal {
+public class Main {
+
     public static void main(String[] args) {
+        startGame();
 
         Item sword = new Item("sword", "normal sword", 11, 20, SkillType.DAMAGE);
         Item dagger = new Item("dagger", "normal dagger", 15, 20, SkillType.DAMAGE);
@@ -41,6 +42,7 @@ public class Principal {
                         skills,
                         items
                 );
+
         //Action Damage = new Action("daño hecho 20",
 
 //        System.out.println(
@@ -76,7 +78,13 @@ public class Principal {
 //        int numero = ConsoleAdapter.read();
 //        System.out.println("Número ingresado: " + numero);
 
-        MenuScreen menuScreen = new MenuScreen();
-        menuScreen.show();
     }
+
+    public static void startGame() {
+        // LLamar a la pantalla principal (MenuScreem)
+        MenuScreen menu = new MenuScreen();
+        menu.loadScreen();
+    }
+
 }
+
