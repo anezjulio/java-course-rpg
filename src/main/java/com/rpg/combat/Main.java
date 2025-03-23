@@ -1,7 +1,7 @@
 package com.rpg.combat;
 
 
-import com.rpg.combat.application.screen.MenuScreen;
+import com.rpg.combat.infraestructure.output.screen.MenuScreen;
 import com.rpg.combat.domain.constants.Role;
 import com.rpg.combat.domain.constants.SkillType;
 import com.rpg.combat.domain.models.Item;
@@ -14,8 +14,26 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        //testCode();
+        loadRepositories();
         startGame();
+    }
 
+    // cargar listas de entidades
+    private static void loadRepositories() {
+
+    }
+
+    // empezar juego
+    public static void startGame() {
+
+        // LLamar a al handle que llama al caso de uso, y este a la pantalla de menu, y al servicio de redireccionador
+        MenuScreen menu = new MenuScreen();
+        menu.show();
+
+    }
+
+    public static void testCode(){
         Item sword = new Item("sword", "normal sword", 11, 20, SkillType.DAMAGE);
         Item dagger = new Item("dagger", "normal dagger", 15, 20, SkillType.DAMAGE);
         List<Item> items = new ArrayList<Item>();
@@ -78,12 +96,6 @@ public class Main {
 //        int numero = ConsoleAdapter.read();
 //        System.out.println("Número ingresado: " + numero);
 
-    }
-
-    public static void startGame() {
-        // LLamar a la pantalla principal (MenuScreem)
-        MenuScreen menu = new MenuScreen();
-        menu.loadScreen();
     }
 
 }

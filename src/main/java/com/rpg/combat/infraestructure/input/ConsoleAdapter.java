@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 //TODO: convertir esta clase en un singleton (patron de diseño)
 public class ConsoleAdapter {
-    public static int read() {
+
+    public int read() {
         Scanner scanner = new Scanner(System.in);
         int numero = 0;
         boolean valido = false;
