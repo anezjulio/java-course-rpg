@@ -27,10 +27,18 @@ public class MenuScreen implements Screen{
 
     @Override
     public void show() {
-        
+        for (String line : getTemplate()) {
+            System.out.println(line);
+        }
     }
 
     /*
+    *
+    *         List<TemplateTag> tags = new ArrayList<>();
+        tags.add(new TemplateTag())"<nombreDelPersonaje>"
+
+        System.out.println(this.replaceTemplateTags(tags));
+
     *
         String prototipoParaMostrarLaClase = " Clase: (nombreDelPersonaje)";
         prototipoParaMostrarLaClase.replace("(nombreDelPersonaje)",personajePrincipal.getRole().name());
@@ -39,7 +47,22 @@ public class MenuScreen implements Screen{
         System.out.println(" HP:    (hpPersonaje) ");
         System.out.println("");
         System.out.println("");
-        System.out.println(" Enemigo1: (nombreDelEnemigo1)");
+        *
+        * <listaDeEnemigos>
+        *
+        *  System.out.println(" Enemigo1: <nombreDelEnemigo1>");
+        System.out.println(" HP: (hpEnemigo1)");
+        System.out.println("");
+        *
+        *  System.out.println(" Enemigo2: <nombreDelEnemigo1>");
+        System.out.println(" HP: (hpEnemigo1)");
+        System.out.println("");
+        *
+        *  System.out.println(" Enemigo3: <nombreDelEnemigo1>");
+        System.out.println(" HP: (hpEnemigo1)");
+        System.out.println("");
+        *
+        System.out.println(" Enemigo1: <nombreDelEnemigo1>");
         System.out.println(" HP: (hpEnemigo1)");
         System.out.println("");
         System.out.println(" Enemigo2: (nombreDelEnemigo2)");

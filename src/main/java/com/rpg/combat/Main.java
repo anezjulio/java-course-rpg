@@ -1,6 +1,7 @@
 package com.rpg.combat;
 
 
+import com.rpg.combat.infraestructure.output.screen.LoadGameScreen;
 import com.rpg.combat.infraestructure.output.screen.MenuScreen;
 import com.rpg.combat.domain.constants.Role;
 import com.rpg.combat.domain.constants.SkillType;
@@ -13,6 +14,17 @@ import java.util.List;
 
 public class Main {
 
+    // empezar juego
+    public static void startGame() {
+        // LLamar a al handle que llama al caso de uso, y este a la pantalla de menu, y al servicio de redireccionador
+        //MenuScreen menu = new MenuScreen();
+        //menu.show();
+
+        LoadGameScreen load = new LoadGameScreen();
+        load.show();
+
+    }
+
     public static void main(String[] args) {
         //testCode();
         loadRepositories();
@@ -24,14 +36,7 @@ public class Main {
 
     }
 
-    // empezar juego
-    public static void startGame() {
 
-        // LLamar a al handle que llama al caso de uso, y este a la pantalla de menu, y al servicio de redireccionador
-        MenuScreen menu = new MenuScreen();
-        menu.show();
-
-    }
 
     public static void testCode(){
         Item sword = new Item("sword", "normal sword", 11, 20, SkillType.DAMAGE);

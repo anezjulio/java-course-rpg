@@ -4,31 +4,18 @@ import com.rpg.combat.domain.models.TemplateTag;
 
 import java.util.List;
 
+// template de la pantalla, incluyendo las etiquetas que seran reemplazadas por replaceTemplateTags(tags)
+// ej:
+// <nombreDelPersonaje>
+// se reemplaza el tag nombreDelPersonaje dentro de replaceTemplateTags(List<TemplateTags> tags)
+// Clase: " + nombreDelPersonaje
+
 public interface Screen {
 
-    // template de la pantalla, incluyendo las etiquetas que seran reemplazadas por replaceTemplateTags(tags)
-    // ej:
-    // <nombreDelPersonaje>
-    // se reemplaza el tag nombreDelPersonaje dentro de replaceTemplateTags(List<TemplateTags> tags)
-    // Clase: " + nombreDelPersonaje
     String[] getTemplate();
 
     // Muestra la pantalla final con las etiquetas reemplazados con el texto
     void show();
-
-   /* // Reemplaza tags dentro de
-    default String[] replaceTemplateTags(List<TemplateTag> tags){
-        String[] processedTemplate = getTemplate();
-        // Reemplazar cada etiqueta en la línea
-        for (TemplateTag tag : tags) {
-            for (String line : getTemplate()) {
-                if(line.contains(tag.getKey())){
-                    // reemplazar tag de processedTemplate por el String[] que devuelve tag.getValues()
-                }
-            }
-        }
-        return processedTemplate;
-    }*/
 
     default String[] replaceTemplateTags(List<TemplateTag> tags) {
         String[] processedTemplate = getTemplate().clone(); // Clonar para evitar modificar el original
@@ -46,26 +33,4 @@ public interface Screen {
         }
         return processedTemplate;
     }
-
-    
-    /*
-       simple
-
-         "<nombreDelPersonaje>"
-         " Clase: " + nombreDelPersonaje
-
-       multiple
-
-        "<Enemigos>"
-        " Enemigo1: " + nombreDelEnemigo1
-        " HP: " + hpEnemigo1
-        ""
-        " Enemigo2: " + nombreDelEnemigo2
-        " HP: " + hpEnemigo2
-        ""
-     * 
-     * 
-     * 
-     * 
-    * */
 }
