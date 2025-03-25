@@ -1,4 +1,4 @@
-package src.main.java.com.rpg.combat.infraestructure.persistence;
+package com.rpg.combat.infraestructure.persistence;
 
 public class EnemyRepository {
 }

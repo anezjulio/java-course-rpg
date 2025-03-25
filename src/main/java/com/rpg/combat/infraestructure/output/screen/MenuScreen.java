@@ -1,89 +1,65 @@
 package com.rpg.combat.infraestructure.output.screen;
 
-public class MenuScreen implements Screen{
+import com.rpg.combat.domain.models.OptionScreen;
+import com.rpg.combat.infraestructure.output.ConsoleUI;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class MenuScreen implements Screen {
+
+    private final ConsoleUI consoleUI;
+
+    public MenuScreen(ConsoleUI consoleUI) {
+        this.consoleUI = consoleUI;
+    }
 
     @Override
     public String[] getTemplate() {
         String[] template = {
-            "██████╗░██╗░░░██╗███╗░░██╗░██████╗░███████╗░█████╗░███╗░░██╗  ███╗░░░███╗░█████╗░████████╗░█████╗░██╗░░██╗",
-            "██╔══██╗██║░░░██║████╗░██║██╔════╝░██╔════╝██╔══██╗████╗░██║  ████╗░████║██╔══██╗╚══██╔══╝██╔══██╗██║░░██║",
-            "██║░░██║██║░░░██║██╔██╗██║██║░░██╗░█████╗░░██║░░██║██╔██╗██║  ██╔████╔██║███████║░░░██║░░░██║░░╚═╝███████║",
-            "██║░░██║██║░░░██║██║╚████║██║░░╚██╗██╔══╝░░██║░░██║██║╚████║  ██║╚██╔╝██║██╔══██║░░░██║░░░██║░░██╗██╔══██║",
-            "██████╔╝╚██████╔╝██║░╚███║╚██████╔╝███████╗╚█████╔╝██║░╚███║  ██║░╚═╝░██║██║░░██║░░░██║░░░╚█████╔╝██║░░██║",
-            "╚═════╝░░╚═════╝░╚═╝░░╚══╝░╚═════╝░╚══════╝░╚════╝░╚═╝░░╚══╝  ╚═╝░░░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝",
-            "",
-            "▄█ ░ █▄░█ █▀▀ █░█░█   █▀█ █▀█ █▀█ █▀▀ █ █░░ █▀▀",
-            "░█ ▄ █░▀█ ██▄ ▀▄▀▄▀   █▀▀ █▀▄ █▄█ █▀░ █ █▄▄ ██▄",
-            "▀█ ░ █░░ █▀█ ▄▀█ █▀▄   █▀█ █▀█ █▀█ █▀▀ █ █░░ █▀▀",
-            "█▄ ▄ █▄▄ █▄█ █▀█ █▄▀   █▀▀ █▀▄ █▄█ █▀░ █ █▄▄ ██▄",
-            "█▀█ ░ █▀▀ █▀█ █▀▀ █▀▄ █ █▀ ▀█▀",
-            "█▄█ ▄ █▄▄ █▀▄ ██▄ █▄▀ █ ▄█ ░█░",
-            "",
-            "Clase: <nombreDelPersonaje> ",
-            "Narrator : choice your option"
+                "██████╗░██╗░░░██╗███╗░░██╗░██████╗░███████╗░█████╗░███╗░░██╗  ███╗░░░███╗░█████╗░████████╗░█████╗░██╗░░██╗",
+                "██╔══██╗██║░░░██║████╗░██║██╔════╝░██╔════╝██╔══██╗████╗░██║  ████╗░████║██╔══██╗╚══██╔══╝██╔══██╗██║░░██║",
+                "██║░░██║██║░░░██║██╔██╗██║██║░░██╗░█████╗░░██║░░██║██╔██╗██║  ██╔████╔██║███████║░░░██║░░░██║░░╚═╝███████║",
+                "██║░░██║██║░░░██║██║╚████║██║░░╚██╗██╔══╝░░██║░░██║██║╚████║  ██║╚██╔╝██║██╔══██║░░░██║░░░██║░░██╗██╔══██║",
+                "██████╔╝╚██████╔╝██║░╚███║╚██████╔╝███████╗╚█████╔╝██║░╚███║  ██║░╚═╝░██║██║░░██║░░░██║░░░╚█████╔╝██║░░██║",
+                "╚═════╝░░╚═════╝░╚═╝░░╚══╝░╚═════╝░╚══════╝░╚════╝░╚═╝░░╚══╝  ╚═╝░░░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                /*  "▄█ ░ █▄░█ █▀▀ █░█░█   █▀█ █▀█ █▀█ █▀▀ █ █░░ █▀▀",
+                  "░█ ▄ █░▀█ ██▄ ▀▄▀▄▀   █▀▀ █▀▄ █▄█ █▀░ █ █▄▄ ██▄",
+                  "▀█ ░ █░░ █▀█ ▄▀█ █▀▄   █▀█ █▀█ █▀█ █▀▀ █ █░░ █▀▀",
+                  "█▄ ▄ █▄▄ █▄█ █▀█ █▄▀   █▀▀ █▀▄ █▄█ █▀░ █ █▄▄ ██▄",
+                  "█▀█ ░ █▀▀ █▀█ █▀▀ █▀▄ █ █▀ ▀█▀",
+                  "█▄█ ▄ █▄▄ █▀▄ ██▄ █▄▀ █ ▄█ ░█░",
+                  "",*/
         };
         return template;
     }
 
     @Override
     public void show() {
-        for (String line : getTemplate()) {
-            System.out.println(line);
-        }
+        consoleUI.cls();
+        consoleUI.showTemplate(getTemplate());
     }
 
-    /*
-    *
-    *         List<TemplateTag> tags = new ArrayList<>();
-        tags.add(new TemplateTag())"<nombreDelPersonaje>"
+    @Override
+    public OptionScreen getOptions() {
 
-        System.out.println(this.replaceTemplateTags(tags));
+        String title = "Options";
+        List<String> options = new ArrayList<>(Arrays.asList("New Game", "Continue", "Credits", "Exit"));
 
-    *
-        String prototipoParaMostrarLaClase = " Clase: (nombreDelPersonaje)";
-        prototipoParaMostrarLaClase.replace("(nombreDelPersonaje)",personajePrincipal.getRole().name());
-        System.out.println(" Clase: (nombreDelPersonaje) ");
-        System.out.println("<nombreDelPersonaje>");
-        System.out.println(" HP:    (hpPersonaje) ");
-        System.out.println("");
-        System.out.println("");
-        *
-        * <listaDeEnemigos>
-        *
-        *  System.out.println(" Enemigo1: <nombreDelEnemigo1>");
-        System.out.println(" HP: (hpEnemigo1)");
-        System.out.println("");
-        *
-        *  System.out.println(" Enemigo2: <nombreDelEnemigo1>");
-        System.out.println(" HP: (hpEnemigo1)");
-        System.out.println("");
-        *
-        *  System.out.println(" Enemigo3: <nombreDelEnemigo1>");
-        System.out.println(" HP: (hpEnemigo1)");
-        System.out.println("");
-        *
-        System.out.println(" Enemigo1: <nombreDelEnemigo1>");
-        System.out.println(" HP: (hpEnemigo1)");
-        System.out.println("");
-        System.out.println(" Enemigo2: (nombreDelEnemigo2)");
-        System.out.println(" HP: (hpEnemigo2)");
-        System.out.println("");
-        System.out.println("--------------------------------------------------------------");
-        System.out.println(" Inicio de la batalla       ");
-        System.out.println(" Es tu turno    ");
-        System.out.println(" Accion:");
-        System.out.println("    1. Skill");
-        System.out.println(" Skill:");
-        System.out.println("    1. ()");
-        System.out.println("    2. Double damage");
-        System.out.println(" Selecciona enemigo:");
-        System.out.println("    1. Soldado A ");
-        System.out.println("    2. Elemental A");
-        System.out.println(" Soldado A Utiliza skill Slash, hace 50 daño al jugado        ");
-        System.out.println(" Elemental A Utiliza skill fireball, hace de daño al jugado   ");
-        System.out.println(" jugador Utiliza skill fireball, hace 70 daño al jugado       ");
-        System.out.println("--------------------------------------------------------------");
-    * */
+        OptionScreen optionScreen = new OptionScreen(title, options);
 
+        return optionScreen;
+    }
 
 }

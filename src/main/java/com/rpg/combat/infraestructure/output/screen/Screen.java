@@ -1,24 +1,24 @@
 package com.rpg.combat.infraestructure.output.screen;
 
+import com.rpg.combat.domain.models.OptionScreen;
 import com.rpg.combat.domain.models.TemplateTag;
 
 import java.util.List;
 
-// template de la pantalla, incluyendo las etiquetas que seran reemplazadas por replaceTemplateTags(tags)
-// ej:
-// <nombreDelPersonaje>
-// se reemplaza el tag nombreDelPersonaje dentro de replaceTemplateTags(List<TemplateTags> tags)
-// Clase: " + nombreDelPersonaje
-
 public interface Screen {
 
+    // Plantilla o prototipo para la pantalla
     String[] getTemplate();
 
     // Muestra la pantalla final con las etiquetas reemplazados con el texto
     void show();
 
+    // Devolver Opciones a mostrar en ConsoleUI
+    OptionScreen getOptions();
+
     default String[] replaceTemplateTags(List<TemplateTag> tags) {
-        String[] processedTemplate = getTemplate().clone(); // Clonar para evitar modificar el original
+        // Clonar para evitar modificar el original
+        String[] processedTemplate = getTemplate().clone();
         // Iterar sobre cada etiqueta a reemplazar
         for (TemplateTag tag : tags) {
             String key = tag.getKey();

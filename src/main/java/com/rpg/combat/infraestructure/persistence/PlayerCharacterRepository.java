@@ -1,4 +1,4 @@
 package com.rpg.combat.infraestructure.persistence;
 
-public class ItemRepository {
+public class PlayerCharacterRepository {
 }
