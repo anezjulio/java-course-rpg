@@ -34,10 +34,11 @@ public class ContinueHandler implements Handler {
         // Muestra la pantalla de menu
         continueScreen.show();
 
+        // mostat las opciones de carga de Checkpoint
         consoleUI.showOptions(
                 continueScreen.getOptions()
         );
-
+        // se lee la opcion seleccionada
         int selectedOpcion = consoleInput.read();
 
         // last option will be return to menu selection

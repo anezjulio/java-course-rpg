@@ -13,12 +13,8 @@ public class ConsoleUI {
     private final String SELECT_OPTION_TITLE = "=== " + SELECT_OPTION_TAG + " ===";
 
     public void showOptions(OptionScreen optionScreen) {
-        showOptions(optionScreen.getTitle(), optionScreen.getOptions());
-    }
-
-    public void showOptions(String title, List<String> options) {
-        showTitle(title);
-        showOptions(options);
+        showTitle(optionScreen.getTitle());
+        showOptions(optionScreen.getOptions());
     }
 
     public void showOptions(List<String> options) {
