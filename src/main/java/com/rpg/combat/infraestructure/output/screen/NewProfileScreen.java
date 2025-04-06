@@ -30,7 +30,6 @@ public class NewProfileScreen implements Screen {
     @Override
     public void show() {
 
-
     }
 
     @Override
@@ -38,11 +37,9 @@ public class NewProfileScreen implements Screen {
         return null;
     }
 
-
     public void LoadPlayerCharacters(List<PlayerCharacter> playerCharacters) {
         this.playerCharacters = playerCharacters;
 
     }
-
 
 }
