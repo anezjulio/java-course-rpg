@@ -9,7 +9,9 @@ import com.rpg.combat.infraestructure.output.ConsoleUI;
 import com.rpg.combat.infraestructure.output.GameScreenManager;
 import com.rpg.combat.infraestructure.output.screen.ContinueScreen;
 import com.rpg.combat.infraestructure.output.screen.MenuScreen;
+import com.rpg.combat.infraestructure.output.screen.NewProfileScreen;
 import com.rpg.combat.infraestructure.persistence.GameRepository;
+import com.rpg.combat.infraestructure.persistence.PlayerCharacterRepository;
 
 public class Main {
 
@@ -20,12 +22,13 @@ public class Main {
 
     private static MenuScreen menuScreen;
     private static ContinueScreen continueScreen;
+    private static NewProfileScreen newProfileScreen;
 
     private static GameRepository gameRepository;
+    private static PlayerCharacterRepository playerCharacterRepository;
 
     private static ConsoleInput consoleInput;
     private static ConsoleUI consoleUI;
-
 
     public static void main(String[] args) {
 
@@ -68,6 +71,13 @@ public class Main {
         return gameRepository;
     }
 
+    public static PlayerCharacterRepository getPlayerCharacterRepository() {
+        if (playerCharacterRepository == null) {
+            playerCharacterRepository = new PlayerCharacterRepository();
+        }
+        return playerCharacterRepository;
+    }
+
     public static ContinueScreen getContinueScreen() {
         if (continueScreen == null) {
             continueScreen = new ContinueScreen(getConsoleUI());
@@ -85,9 +95,20 @@ public class Main {
 
     public static NewProfileHandler getNewProfileHandler() {
         if (newProfileHandler == null) {
-            newProfileHandler = new NewProfileHandler();
+            newProfileHandler = new NewProfileHandler(
+
+                    getNewProfileScreen(), getConsoleInput(), getConsoleUI(),getPlayerCharacterRepository()
+            );
+
         }
         return newProfileHandler;
+    }
+
+    private static NewProfileScreen getNewProfileScreen() {
+        if (newProfileScreen == null) {
+            newProfileScreen = new NewProfileScreen(getConsoleUI());
+        }
+        return newProfileScreen;
     }
 
     public static MenuScreen getMenuScreen() {

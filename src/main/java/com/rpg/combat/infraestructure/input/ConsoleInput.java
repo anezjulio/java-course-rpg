@@ -34,6 +34,10 @@ public class ConsoleInput {
         return read(DEFAULT_MAX_OPTIONS_AMOUNT);
     }
 
+    public String readUser() {
+        Scanner scanner = new Scanner(System.in);
+        return  scanner.nextLine();
+    }
 }
 
 
