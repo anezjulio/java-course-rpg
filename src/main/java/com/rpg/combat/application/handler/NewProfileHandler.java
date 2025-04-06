@@ -16,14 +16,12 @@ public class NewProfileHandler implements Handler {
     private final ConsoleUI consoleUI;
     private final PlayerCharacterRepository playerCharacterRepository;
 
-
     public NewProfileHandler(NewProfileScreen newProfileScreen, ConsoleInput consoleInput, ConsoleUI consoleUI, PlayerCharacterRepository playerCharacterRepository) {
         this.newProfileScreen = newProfileScreen;
         this.consoleInput = consoleInput;
         this.consoleUI = consoleUI;
         this.playerCharacterRepository = playerCharacterRepository;
     }
-
 
     @Override
     public void execute() {
@@ -39,10 +37,4 @@ public class NewProfileHandler implements Handler {
 
     }
 
-
 }
-
-//  Leer nombre del jugador
-//leer el personaje
-//guardar partida
-//redirecionar

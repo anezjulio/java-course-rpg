@@ -12,7 +12,6 @@ import java.util.List;
 
 public class PlayerCharacterRepository {
 
-
     public static List<PlayerCharacter> getPlayerCharacter() {
         return getplayerCharacterslist();
 
@@ -63,13 +62,9 @@ public class PlayerCharacterRepository {
                         skills,
                         items
                 );
-        /*List<PlayerCharacter> playercharacters = new ArrayList<>(Arrays.asList(mage, warrior));  Para resumir en una linea
-        return playercharacters;*/
-
 
         return new ArrayList<>(Arrays.asList(mage, warrior));
 
     }
-
 
 }
