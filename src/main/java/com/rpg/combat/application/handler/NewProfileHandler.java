@@ -1,6 +1,7 @@
 package com.rpg.combat.application.handler;
 
 
+import com.rpg.combat.Main;
 import com.rpg.combat.domain.models.PlayerCharacter;
 import com.rpg.combat.infraestructure.input.ConsoleInput;
 import com.rpg.combat.infraestructure.output.ConsoleUI;
@@ -27,14 +28,31 @@ public class NewProfileHandler implements Handler {
     public void execute() {
 
         consoleUI.cls();
-        consoleUI.showTemplate(newProfileScreen.getTemplate());
-        consoleUI.showMessage("ingrese nombre del jugador: ");
-        String username = consoleInput.readUser();
         List<PlayerCharacter> playerCharacterList = playerCharacterRepository.getplayerCharacterslist();
         newProfileScreen.LoadPlayerCharacters(playerCharacterList);
-
         newProfileScreen.show();
+        consoleUI.showMessage("ingrese nombre del jugador: ");
+        String username = consoleInput.readUser();
+        newProfileScreen.showPlayerList();
+        consoleUI.showOptions(
+                newProfileScreen.getOptions()
+        );
+
+        int selectedOpcion = consoleInput.read();
+
+        if(selectedOpcion == playerCharacterList.size() + 1){
+            System.out.println("returning to menu selection... ... ...");
+            MenuHandler menuHandler = Main.getMenuHandler();
+            menuHandler.execute();
+        }
+
+        if(selectedOpcion >= 1 && selectedOpcion < playerCharacterList.size() + 1){
+            System.out.println("Selecciono: " + selectedOpcion);
+        }
+
+
 
     }
+
 
 }
