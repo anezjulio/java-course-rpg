@@ -87,6 +87,17 @@ public class NewProfileScreen implements Screen {
         return optionScreen;
     }
 
+    public OptionScreen getBeginBattleOption(){
+        String title = "selecione si desea continuar a la batalla o salir al menu";
+        List<String> options = new ArrayList<>();
+        options.add("Empezar Batalla");
+        options.add("Regresar al menu");
+        OptionScreen optionScreen = new OptionScreen(title, options);
+        return optionScreen;
+
+
+    }
+
     private List<String> getOptionValuesToDisplay(){
         List<String> valuesToDisplay = new ArrayList<>();
         for (PlayerCharacter playerCharacter: playerCharacters) {
