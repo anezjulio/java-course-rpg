@@ -17,8 +17,14 @@ public interface Screen {
     OptionScreen getOptions();
 
     default String[] replaceTemplateTags(List<TemplateTag> tags) {
+        return replaceTemplateTags(tags, getTemplate());
+    }
+
+    default String[] replaceTemplateTags(List<TemplateTag> tags, String[] template) {
+
         // Clonar para evitar modificar el original
-        String[] processedTemplate = getTemplate().clone();
+        // TODO: RECIBIR GETTEMPLADE
+        String[] processedTemplate = template.clone();
         // Iterar sobre cada etiqueta a reemplazar
         for (TemplateTag tag : tags) {
             String key = tag.getKey();
@@ -33,4 +39,5 @@ public interface Screen {
         }
         return processedTemplate;
     }
+
 }
