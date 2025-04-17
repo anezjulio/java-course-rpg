@@ -41,11 +41,10 @@ public class ConsoleUI {
     }
 
     public void cls() {
-        for(int i=0; i < 30; i++){
+        for(int i=0; i < 35; i++){
             System.out.println(" ");
         }
     }
-
 
     //TODO: quitar cuando se reemplacen todos los templates con String[] por List<String>
     public void showOptions(String[] options) {

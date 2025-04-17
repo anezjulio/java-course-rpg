@@ -14,7 +14,6 @@ public class PlayerCharacterRepository {
 
     public static List<PlayerCharacter> getPlayerCharacter() {
         return getplayerCharacterslist();
-
     }
 
     public static List<PlayerCharacter> getplayerCharacterslist() {

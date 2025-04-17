@@ -2,6 +2,7 @@ package com.rpg.combat.application.handler;
 
 import com.rpg.combat.Main;
 import com.rpg.combat.domain.models.Game;
+import com.rpg.combat.domain.services.BattleService;
 import com.rpg.combat.infraestructure.input.ConsoleInput;
 import com.rpg.combat.infraestructure.output.ConsoleUI;
 import com.rpg.combat.infraestructure.output.screen.ContinueScreen;
@@ -15,12 +16,20 @@ public class ContinueHandler implements Handler {
     private final ContinueScreen continueScreen;
     private final ConsoleInput consoleInput;
     private final ConsoleUI consoleUI;
+    private final BattleService battleService;
 
-    public ContinueHandler(GameRepository gameRepository, ContinueScreen continueScreen, ConsoleInput consoleInput, ConsoleUI consoleUI) {
+    public ContinueHandler(
+            GameRepository gameRepository,
+            ContinueScreen continueScreen,
+            ConsoleInput consoleInput,
+            ConsoleUI consoleUI,
+            BattleService battleService
+    ) {
         this.gameRepository = gameRepository;
         this.continueScreen = continueScreen;
         this.consoleInput = consoleInput;
         this.consoleUI = consoleUI;
+        this.battleService = battleService;
     }
 
     @Override
@@ -38,18 +47,20 @@ public class ContinueHandler implements Handler {
         consoleUI.showOptions(
                 continueScreen.getOptions()
         );
+
         // se lee la opcion seleccionada
         int selectedOpcion = consoleInput.read();
 
-        // last option will be return to menu selection
-        if(selectedOpcion == savesGame.size() + 1){
-            System.out.println("returning to menu selection... ... ...");
-            MenuHandler menuHandler = Main.getMenuHandler();
-            menuHandler.execute();
+        if(selectedOpcion >= 1 && selectedOpcion < savesGame.size() + 1){
+            battleService.setCurrentGame(savesGame.get(selectedOpcion - 1));
+            BattleHandler battleHandler = Main.getBattleHandler();
+            battleHandler.execute();
         }
 
-        if(selectedOpcion >= 1 && selectedOpcion < savesGame.size() + 1){
-            System.out.println("Selecciono: " + selectedOpcion);
+        // last option will be return to menu selection
+        if(selectedOpcion == savesGame.size() + 1){
+            MenuHandler menuHandler = Main.getMenuHandler();
+            menuHandler.execute();
         }
 
     }
