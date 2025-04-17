@@ -1,5 +1,11 @@
 package com.rpg.combat.domain.services;
 
+import com.rpg.combat.domain.models.Game;
+
 public class BattleService {
-    // logica del combate por turno
+
+    public static Game curretGame;
+
+
+
 }
