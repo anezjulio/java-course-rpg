@@ -36,16 +36,13 @@ public class BattleHandler implements Handler {
         while(!battleService.IsTheBattleOver()){
             // mostrar template
             battleScreen.show();
-            // mostrar lista de eventos (ultimos 3)
-            battleScreen.showEventsRecord();
+
             for (Character character : battleService.getTurnList()) {
 
                 // turno jugador
                 if (character instanceof PlayerCharacter) {
-
                     PlayerCharacter player = (PlayerCharacter) character;
                     System.out.println("Turno del jugador: " + player.getName());
-
                     // mostrar opciones
                     consoleUI.showOptions(
                             battleScreen.getPlayerActionsOptions()
@@ -62,11 +59,11 @@ public class BattleHandler implements Handler {
 
                     battleScreen.displaySelectedOption(actionSelected,targetSelected);
 
-
                     consoleUI.showOptions(
                             battleScreen.getPlayerContinueOptions()
                     );
                     int confirm = consoleInput.read();
+
                     // ejecutar accion
 
                 // turno enemigo
@@ -77,11 +74,10 @@ public class BattleHandler implements Handler {
                     // mostrar accion escogida por enemigo
                     // ejecutar accion
                 }
-            }
 
-            // al terminar turno de todos en la lista, terminar ronda
-            // al finalizar ronda, se vacia y vuelve a cargar la lista de aturnos
-        }
+            }// for (Character character : battleService.getTurnList()) {
+
+        } // while(!battleService.IsTheBattleOver()){
 
         if(battleService.isPlayerDefeated()){
             // Jugador Pierde

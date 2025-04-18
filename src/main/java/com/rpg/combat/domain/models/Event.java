@@ -38,6 +38,6 @@ public class Event {
     }
 
     public String toString(){
-        return playerTurn.getName() + " : " + action.getMove().getSkillType() + " " + action.getMove().getAmount() + " -> " + target.getName() ;
+        return playerTurn.getName() + " : " + action.getSkillType() + " " + action.getAmount() + " -> " + target.getName() ;
     }
 }

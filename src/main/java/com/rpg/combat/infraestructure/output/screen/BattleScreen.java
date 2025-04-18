@@ -13,6 +13,8 @@ public class BattleScreen implements Screen {
     private final ConsoleUI consoleUI;
     private final BattleService battleService;
 
+    private final int LIMIT_EVENTS_TO_DISPLAY = 3;
+
     public BattleScreen(
             ConsoleUI consoleUI,
             BattleService battleService
@@ -28,7 +30,6 @@ public class BattleScreen implements Screen {
                 "               Chapter: <currentChapter>            ",
                 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 "Player: <currentPlayerName>",
-                "",
                 "Character: <characterList>",
                 "Enemies: ",
                 "<enemyList>",
@@ -58,7 +59,7 @@ public class BattleScreen implements Screen {
         String playerTurnTag = "<playerTurn>";
         List<String> playerTurnTemplateToReplace = new ArrayList<>();
         playerTurnTemplateToReplace.add(
-                battleService.getCurrentGame().getName()
+                battleService.getCurrentGame().getPlayerCharacter().getName()
         );
         tagList.add(new TemplateTag(playerTurnTag, playerTurnTemplateToReplace.toArray(new String[0])));
 
@@ -82,13 +83,20 @@ public class BattleScreen implements Screen {
     private TemplateTag getEventListTag() {
         String tagName = "<eventList>";
         List<String> templateToReplace = new ArrayList<>();
-        for (Event event: battleService.getCurrentGame().getEventRecord()) {
-            templateToReplace.add(event.toString());
+
+        List<Event> events = battleService.getCurrentGame().getEventRecord();
+
+        int eventSize = events.size();
+        int eventCount = 0;
+
+        for (int i = eventSize - 1; eventCount < LIMIT_EVENTS_TO_DISPLAY; i-- ){
+            if ( i >= 0 ){
+                templateToReplace.add(events.get(i).toString() + "\n" );
+            }
+            eventCount++;
         }
         return getTemplateTag(tagName, templateToReplace);
     }
-
-
 
     private String getActionSelected(int actionSelected) {
         List<Item> itemList = battleService.getCurrentGame().getPlayerCharacter().getItems();
@@ -247,14 +255,6 @@ public class BattleScreen implements Screen {
         OptionScreen optionScreen = new OptionScreen(title, options);
         return optionScreen;
     }
-
-    public void showEventsRecord() {
-
-
-    }
-
-
-
 
     /*
     *

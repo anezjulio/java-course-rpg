@@ -61,13 +61,41 @@ public class GameRepository {
                         items
                 );
 
-        Move dano = new Move(30, SkillType.DAMAGE);
-        Move curar = new Move(30, SkillType.HEAL);
+        PlayerCharacter buba = new PlayerCharacter(
+                "BUBA",
+                Role.MAGE,
+                1,
+                10,
+                20,
+                11,
+                100,
+                100,
+                100,
+                100,
+                skills,
+                items);
 
-        //Action action = new Action();
+        PlayerCharacter gump = new PlayerCharacter(
+                "GUMP",
+                Role.WARRIOR,
+                1,
+                10,
+                20,
+                11,
+                100,
+                100,
+                100,
+                100,
+                skills,
+                items);
 
-        //Event event = new Event(dagger)
-
+        Action dano = new Action(30, SkillType.DAMAGE);
+        Action curar = new Action(30, SkillType.HEAL);
+        Event event1 = new Event(dano, buba, pudge);
+        Event event2 = new Event(curar, buba, gump);
+        List<Event> events = new ArrayList<>();
+        events.add(event1);
+        events.add(event2);
 
         Game partidaDePrueba = new Game(
                 //Crea una fecha con la hora, dia, minuto,segundo actual
@@ -75,22 +103,10 @@ public class GameRepository {
                 "wolfcross",
                 0,
                 0,
-                new PlayerCharacter(
-                        "BUBA",
-                        Role.MAGE,
-                        1,
-                        10,
-                        20,
-                        11,
-                        100,
-                        100,
-                        100,
-                        100,
-                        skills,
-                        items),
+                buba,
                 Arrays.asList(pudge, visage),
                 Chapter.FIRST,
-                null,
+                events,
                 null);
 
         Game partidaDePrueba2 = new Game(
@@ -99,22 +115,10 @@ public class GameRepository {
                 "dulceDeGuayaba",
                 0,
                 0,
-                new PlayerCharacter(
-                        "GUMP",
-                        Role.WARRIOR,
-                        1,
-                        10,
-                        20,
-                        11,
-                        100,
-                        100,
-                        100,
-                        100,
-                        skills,
-                        items),
+                gump,
                 Arrays.asList(visage,pudge, pudge),
                 Chapter.SECOND,
-                null,
+                events,
                 null);
 
         return new ArrayList<>(Arrays.asList(partidaDePrueba, partidaDePrueba2));

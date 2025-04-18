@@ -2,7 +2,8 @@ package com.rpg.combat.domain.models;
 
 import com.rpg.combat.domain.constants.SkillType;
 
-public class Skill extends Move {
+public class Skill extends Action {
+
     private String name;
     private String description;
     private int manaRequired;

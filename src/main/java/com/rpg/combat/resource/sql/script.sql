@@ -1,0 +1,4 @@
+CREATE DATABASE rpg;
+USE rpg;
+
+
