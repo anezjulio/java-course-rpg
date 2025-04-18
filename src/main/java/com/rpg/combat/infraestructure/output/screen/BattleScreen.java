@@ -1,10 +1,5 @@
 package com.rpg.combat.infraestructure.output.screen;
 
-// info del jugador HUB
-// lista de enemigos
-// Acciones a tomar
-// leer opcion de la consola
-
 import com.rpg.combat.domain.models.*;
 import com.rpg.combat.domain.services.BattleService;
 import com.rpg.combat.infraestructure.output.ConsoleUI;

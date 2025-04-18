@@ -53,12 +53,15 @@ public class BattleHandler implements Handler {
                     consoleUI.showOptions(
                             battleScreen.getPlayerActionsOptions()
                     );
-                    int actionSelected = consoleInput.read();
+                    int actionSelected = consoleInput.read(
+                            battleService.getCurrentGame().getPlayerCharacter().getItems().size()
+                                    + battleService.getCurrentGame().getPlayerCharacter().getSkills().size()
+                            );
 
                     consoleUI.showOptions(
                             battleScreen.getPlayerTargetOptions()
                     );
-                    int targetSelected = consoleInput.read();
+                    int targetSelected = consoleInput.read( battleService.getCurrentGame().getEnemyList().size() );
 
                     battleScreen.displaySelectedOption(actionSelected,targetSelected);
 
