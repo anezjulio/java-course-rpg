@@ -1,6 +1,6 @@
 package com.rpg.combat.domain.models;
 
-import com.rpg.combat.domain.constants.SkillType;
+import com.rpg.combat.domain.constants.MoveType;
 
 public class Item extends Action{
 
@@ -8,8 +8,8 @@ public class Item extends Action{
     private String description;
     private int useAmount;
 
-    public Item(String name, String description, int useAmount, int outputValue, SkillType skillType){
-        super(outputValue, skillType);
+    public Item(String name, String description, int useAmount, int outputValue, MoveType moveType){
+        super(outputValue, moveType);
         this.name = name;
         this.description = description;
         this.useAmount = useAmount;
@@ -17,7 +17,7 @@ public class Item extends Action{
 
     public int getAmount() {return super.getAmount();}
 
-    public SkillType getSkillType() {return super.getSkillType();}
+    public MoveType getMoveType() {return super.getMoveType();}
 
 
     public String getName() {

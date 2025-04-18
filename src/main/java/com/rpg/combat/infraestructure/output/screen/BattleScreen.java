@@ -251,7 +251,10 @@ public class BattleScreen implements Screen {
 
     public OptionScreen getPlayerContinueOptions() {
         String title = "Option";
-        List<String> options = new ArrayList<>(Arrays.asList("Continue"));
+        List<String> options = new ArrayList<>();
+        options.add("Confirmar");
+        options.add("Cancelar");
+        options.add("Saltar turno");
         OptionScreen optionScreen = new OptionScreen(title, options);
         return optionScreen;
     }

@@ -36,38 +36,41 @@ public class BattleHandler implements Handler {
         while(!battleService.IsTheBattleOver()){
             // mostrar template
             battleScreen.show();
-
             for (Character character : battleService.getTurnList()) {
-
                 // turno jugador
                 if (character instanceof PlayerCharacter) {
                     PlayerCharacter player = (PlayerCharacter) character;
                     System.out.println("Turno del jugador: " + player.getName());
-                    // mostrar opciones
-                    consoleUI.showOptions(
-                            battleScreen.getPlayerActionsOptions()
-                    );
-                    int actionSelected = consoleInput.read(
-                            battleService.getCurrentGame().getPlayerCharacter().getItems().size()
-                                    + battleService.getCurrentGame().getPlayerCharacter().getSkills().size()
-                            );
+                    int confirmAction = 2;
+                    int actionSelected = 0;
+                    int targetSelected = 0;
+                    while( confirmAction == 2){
+                        // Seleccion de accion
+                        consoleUI.showOptions(battleScreen.getPlayerActionsOptions());
+                        int maxActionsOptions = battleService.getCurrentGame().getPlayerCharacter().getItems().size()
+                                + battleService.getCurrentGame().getPlayerCharacter().getSkills().size();
+                        actionSelected = consoleInput.read(maxActionsOptions);
 
-                    consoleUI.showOptions(
-                            battleScreen.getPlayerTargetOptions()
-                    );
-                    int targetSelected = consoleInput.read( battleService.getCurrentGame().getEnemies().size() );
+                        // Seleccion de enemigo
+                        consoleUI.showOptions(battleScreen.getPlayerTargetOptions());
+                        int maxTargetOptions = battleService.getCurrentGame().getEnemies().size();
+                        targetSelected = consoleInput.read(maxTargetOptions);
 
-                    battleScreen.displaySelectedOption(actionSelected,targetSelected);
-
-                    consoleUI.showOptions(
-                            battleScreen.getPlayerContinueOptions()
-                    );
-                    int confirm = consoleInput.read();
-
-                    // ejecutar accion
+                        // Confirmar accion
+                        battleScreen.displaySelectedOption(actionSelected,targetSelected);
+                        consoleUI.showOptions(
+                                battleScreen.getPlayerContinueOptions()
+                        );
+                        confirmAction = consoleInput.read(3);
+                    } //  while( confirmAction != 1){
+                    // si se confirma la accion, se ejecuta la accion seleccionada
+                    if(confirmAction == 1){
+                        battleService.executeAction(actionSelected, character, targetSelected);
+                    }
+                } // if (character instanceof PlayerCharacter) {
 
                 // turno enemigo
-                } else if (character instanceof Enemy) {
+                if (character instanceof Enemy) {
                     Enemy enemy = (Enemy) character;
                     System.out.println("Turno del enemigo: " + enemy.getName());
                     // escojer con un random la accion del enemigo
@@ -79,14 +82,21 @@ public class BattleHandler implements Handler {
 
         } // while(!battleService.IsTheBattleOver()){
 
-        if(battleService.isPlayerDefeated()){
-            // Jugador Pierde
+        // jugador Gana
+        if(battleService.isAllEnemyDefeated()){
             battleService.resetGame();
-            consoleUI.showMessage("jugador pierde, redireccion a gameover handler........");
-        } else {
-            // jugador Gana
-            battleService.resetGame();
+            battleService.nextChapter();
+            // RewardHandler rewardHandler = Main.getRewardHandler();
+            // rewardHandler.execute();
             consoleUI.showMessage("jugador gana, redireccion a reward handler........");
+        }
+
+        // Jugador Pierde
+        if(battleService.isPlayerDefeated()){
+            battleService.resetGame();
+            // GameOverHandler gameOverHandler = Main.getGameOverHandler();
+            // gameOverHandler.execute();
+            consoleUI.showMessage("jugador pierde, redireccion a gameover handler........");
         }
 
     }

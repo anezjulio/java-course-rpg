@@ -29,7 +29,6 @@ public class Main {
     private static NewProfileScreen newProfileScreen;
     private static BattleScreen battleScreen;
 
-
     private static GameRepository gameRepository;
     private static PlayerCharacterRepository playerCharacterRepository;
 

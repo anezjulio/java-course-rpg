@@ -1,10 +1,9 @@
 package com.rpg.combat.infraestructure.persistence;
 
 import com.rpg.combat.domain.constants.Role;
-import com.rpg.combat.domain.constants.SkillType;
+import com.rpg.combat.domain.constants.MoveType;
 import com.rpg.combat.domain.models.Enemy;
 import com.rpg.combat.domain.models.Item;
-import com.rpg.combat.domain.models.PlayerCharacter;
 import com.rpg.combat.domain.models.Skill;
 
 import java.util.ArrayList;
@@ -20,15 +19,15 @@ public class EnemyRepository {
 
     public static List<Enemy> getEnemyList() {
 
-        Item sword = new Item("sword", "normal sword", 11, 20, SkillType.DAMAGE);
-        Item dagger = new Item("dagger", "normal dagger", 15, 20, SkillType.DAMAGE);
+        Item sword = new Item("sword", "normal sword", 11, 20, MoveType.DAMAGE);
+        Item dagger = new Item("dagger", "normal dagger", 15, 20, MoveType.DAMAGE);
         List<Item> items = new ArrayList<Item>();
         items.add(sword);
         items.add(dagger);
         List<Skill> skills = new ArrayList<Skill>();
-        Skill fireball = new Skill(15, SkillType.DAMAGE, "fireball", "shot a fireball", 30);
-        Skill thunderbolt = new Skill(20, SkillType.DAMAGE, "thunderbolt", "shot a thunderbolt", 50);
-        Skill heal = new Skill(50, SkillType.HEAL, "Heal", "Heal", 50);
+        Skill fireball = new Skill(15, MoveType.DAMAGE, "fireball", "shot a fireball", 30);
+        Skill thunderbolt = new Skill(20, MoveType.DAMAGE, "thunderbolt", "shot a thunderbolt", 50);
+        Skill heal = new Skill(50, MoveType.HEAL, "Heal", "Heal", 50);
         skills.add(fireball);
         skills.add(thunderbolt);
         skills.add(heal);

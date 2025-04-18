@@ -1,15 +1,15 @@
 package com.rpg.combat.domain.models;
 
-import com.rpg.combat.domain.constants.SkillType;
+import com.rpg.combat.domain.constants.MoveType;
 
 public class Action {
 
-    private SkillType skillType;
+    private MoveType moveType;
     private int amount;
 
-    public Action(int amount, SkillType skillType) {
+    public Action(int amount, MoveType moveType) {
         this.amount = amount;
-        this.skillType = skillType;
+        this.moveType = moveType;
     }
 
     public int getAmount() {
@@ -20,11 +20,11 @@ public class Action {
         this.amount = amount;
     }
 
-    public SkillType getSkillType() {
-        return skillType;
+    public MoveType getMoveType() {
+        return moveType;
     }
 
-    public void setSkillType(SkillType skillType) {
-        this.skillType = skillType;
+    public void setMoveType(MoveType moveType) {
+        this.moveType = moveType;
     }
 }

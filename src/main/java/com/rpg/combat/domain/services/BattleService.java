@@ -1,5 +1,7 @@
 package com.rpg.combat.domain.services;
 
+import com.rpg.combat.domain.constants.Chapter;
+import com.rpg.combat.domain.constants.MoveType;
 import com.rpg.combat.domain.models.*;
 import com.rpg.combat.domain.models.Character;
 
@@ -31,6 +33,17 @@ public class BattleService {
        return currentGame;
     }
 
+    public void nextChapter(){
+        switch (currentGame.getChapter()){
+            case PROLOGUE: { currentGame.setChapter(Chapter.FIRST); break; }
+            case FIRST: { currentGame.setChapter(Chapter.SECOND); break; }
+            case SECOND: { currentGame.setChapter(Chapter.THIRD); break; }
+            case THIRD: { currentGame.setChapter(Chapter.FOURTH); break; }
+            case FOURTH: { currentGame.setChapter(Chapter.FINAL); break; }
+            case FINAL: { currentGame.setChapter(Chapter.PROLOGUE); break; }
+        }
+    }
+
     public boolean IsTheBattleOver(){
         List<Enemy> enemyList = currentGame.getEnemies();
         List<PlayerCharacter> playerCharacters = Arrays.asList(currentGame.getPlayerCharacter());
@@ -50,13 +63,12 @@ public class BattleService {
             }
         }
 
-        boolean isAllEnemyDefeated = enemyList.size() == enemiesDefeated;
-        boolean isPlayerDefeated = playerCharacters.size() == playerDefeated;
+        isAllEnemyDefeated = enemyList.size() == enemiesDefeated;
+        isPlayerDefeated = playerCharacters.size() == playerDefeated;
 
         if( isAllEnemyDefeated || isPlayerDefeated){
             return true;
         }
-
         return false;
     }
 
@@ -78,6 +90,49 @@ public class BattleService {
             turnList.add(enemyList.get(i));
         }
         return turnList;
+    }
+
+    public void executeAction(int actionSelected, Character characterTurn,  int targetSelected) {
+        Action action = getActionBySelectedOption(actionSelected);
+        if (characterTurn instanceof PlayerCharacter) {
+            Enemy target = getSelectedTargetEnemy(targetSelected - 1);
+            applyActionToTarget(action, target);
+
+        }
+        if (characterTurn instanceof Enemy) {
+            PlayerCharacter target = getSelectedTargetPlayerCharacter(targetSelected - 1);
+            applyActionToTarget(action, target);
+
+        }
+        System.out.println("Ejecucion de la accion..........");
+    }
+    
+    private void applyActionToTarget(Action action, Character characterTarget){
+        if(MoveType.DAMAGE == action.getMoveType()){
+            characterTarget.doDamage(action.getAmount());
+        }
+        if(MoveType.HEAL == action.getMoveType()){
+            characterTarget.doHeal(action.getAmount());
+        }
+    }
+    
+
+    private Enemy getSelectedTargetEnemy(int targetSelected) {
+        return currentGame.getEnemies().get(targetSelected);
+    }
+
+    private PlayerCharacter getSelectedTargetPlayerCharacter(int targetSelected) {
+        return currentGame.getPlayerCharacter();
+    }
+
+    private Action getActionBySelectedOption(int actionSelected){
+        PlayerCharacter playerCharacter = currentGame.getPlayerCharacter();
+        int maxItems = playerCharacter.getItems().size();
+        if (actionSelected < maxItems){
+            return playerCharacter.getItems().get(actionSelected - 1);
+        } else {
+            return playerCharacter.getSkills().get(actionSelected - maxItems - 1);
+        }
     }
 
 }
