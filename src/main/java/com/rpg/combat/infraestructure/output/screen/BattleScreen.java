@@ -27,13 +27,12 @@ public class BattleScreen implements Screen {
                 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 "               Chapter: <currentChapter>            ",
                 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "Player name: <currentPlayerName>",
+                "Player: <currentPlayerName>",
                 "",
                 "Character: <characterList>",
-                "",
                 "Enemies: ",
                 "<enemyList>",
-                "",
+                "<eventList>",
         };
         return template;
     }
@@ -80,6 +79,16 @@ public class BattleScreen implements Screen {
         return tagList;
     }
 
+    private TemplateTag getEventListTag() {
+        String tagName = "<eventList>";
+        List<String> templateToReplace = new ArrayList<>();
+        for (Event event: battleService.getCurrentGame().getEventRecord()) {
+            templateToReplace.add(event.toString());
+        }
+        return getTemplateTag(tagName, templateToReplace);
+    }
+
+
 
     private String getActionSelected(int actionSelected) {
         List<Item> itemList = battleService.getCurrentGame().getPlayerCharacter().getItems();
@@ -95,7 +104,7 @@ public class BattleScreen implements Screen {
     }
 
     private String getTargetSelected(int targetSelected) {
-        List<Enemy> enemyList = battleService.getCurrentGame().getEnemyList();
+        List<Enemy> enemyList = battleService.getCurrentGame().getEnemies();
         return targetSelected + "." + enemyList.get(targetSelected - 1).getName();
     }
 
@@ -105,6 +114,7 @@ public class BattleScreen implements Screen {
         tagList.add(getCurrentChapterTag());
         tagList.add(getCharacterListTag());
         tagList.add(getEnemyListTag());
+        tagList.add(getEventListTag());
         return tagList;
     }
 
@@ -149,7 +159,7 @@ public class BattleScreen implements Screen {
     private TemplateTag getEnemyListTag() {
         String tagName = "<enemyList>";
         List<String> templateToReplace = new ArrayList<>();
-        List<Enemy> enemyList = battleService.getCurrentGame().getEnemyList();
+        List<Enemy> enemyList = battleService.getCurrentGame().getEnemies();
         for (int i = 0; i < enemyList.size(); i++) {
             templateToReplace.add("--- --- --- --- --- --- --- --- --- --- --- --- ---" + "\n");
             templateToReplace.add((i + 1) + ". " + enemyList.get(i).getName() + "\n");
@@ -223,7 +233,7 @@ public class BattleScreen implements Screen {
 
     private List<String> getPlayerTargetToDisplay() {
         List<String> valuesToDisplay = new ArrayList<>();
-        List<Enemy> enemyList = battleService.getCurrentGame().getEnemyList();
+        List<Enemy> enemyList = battleService.getCurrentGame().getEnemies();
         for (Enemy enemy : enemyList) {
             valuesToDisplay.add(enemy.getName());
         }
@@ -236,6 +246,11 @@ public class BattleScreen implements Screen {
         List<String> options = new ArrayList<>(Arrays.asList("Continue"));
         OptionScreen optionScreen = new OptionScreen(title, options);
         return optionScreen;
+    }
+
+    public void showEventsRecord() {
+
+
     }
 
 

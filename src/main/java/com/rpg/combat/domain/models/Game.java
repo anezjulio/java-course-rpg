@@ -8,15 +8,15 @@ import java.util.List;
 // partida
 public class Game {
 
+    private LocalDateTime startDateTime = LocalDateTime.now();
+    private PlayerCharacter playerCharacter;
+    private List<Enemy> enemies;
+    private List<Event> eventRecord;
+    private Chapter chapter;
+    private Score score;
     private String name;
     private int turn;
     private int round;
-    private LocalDateTime startDateTime = LocalDateTime.now();
-    private PlayerCharacter playerCharacter;
-    private List<Enemy> enemyList;
-    private Chapter chapter;
-    private List<Event> eventRecord;
-    private Score score;
 
     public Game(
             LocalDateTime startDateTime,
@@ -24,7 +24,7 @@ public class Game {
             int turn,
             int round,
             PlayerCharacter playerCharacter,
-            List<Enemy> enemyList,
+            List<Enemy> enemies,
             Chapter chapter,
             List<Event> eventRecord,
             Score score
@@ -35,17 +35,17 @@ public class Game {
         this.chapter = chapter;
         this.eventRecord = eventRecord;
         this.score = score;
-        this.enemyList = enemyList;
+        this.enemies = enemies;
         this.turn = turn;
         this.round = round;
     }
 
-    public List<Enemy> getEnemyList() {
-        return enemyList;
+    public List<Enemy> getEnemies() {
+        return enemies;
     }
 
-    public void setEnemyList(List<Enemy> enemyList) {
-        this.enemyList = enemyList;
+    public void setEnemies(List<Enemy> enemies) {
+        this.enemies = enemies;
     }
 
     public LocalDateTime getStartDateTime() {

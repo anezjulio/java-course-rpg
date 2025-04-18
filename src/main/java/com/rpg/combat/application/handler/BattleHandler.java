@@ -32,15 +32,12 @@ public class BattleHandler implements Handler {
 
     @Override
     public void execute() {
-
-        // validar si el jugador o todos los enemigos llegaron a vida 0
+        // mientras los enemigos no sean derrotados, o , la vida del jugador no sea 0, se continua con el turno siguiente.
         while(!battleService.IsTheBattleOver()){
-
             // mostrar template
             battleScreen.show();
-
             // mostrar lista de eventos (ultimos 3)
-
+            battleScreen.showEventsRecord();
             for (Character character : battleService.getTurnList()) {
 
                 // turno jugador
@@ -61,7 +58,7 @@ public class BattleHandler implements Handler {
                     consoleUI.showOptions(
                             battleScreen.getPlayerTargetOptions()
                     );
-                    int targetSelected = consoleInput.read( battleService.getCurrentGame().getEnemyList().size() );
+                    int targetSelected = consoleInput.read( battleService.getCurrentGame().getEnemies().size() );
 
                     battleScreen.displaySelectedOption(actionSelected,targetSelected);
 
@@ -82,25 +79,19 @@ public class BattleHandler implements Handler {
                 }
             }
 
-
             // al terminar turno de todos en la lista, terminar ronda
             // al finalizar ronda, se vacia y vuelve a cargar la lista de aturnos
-
-
-
         }
 
-
-
-        // evaluar si se gano o se perdio
-
-            // si gano
+        if(battleService.isPlayerDefeated()){
+            // Jugador Pierde
             battleService.resetGame();
-                // ir al handler de recompensa
-
-            // si perdio
+            consoleUI.showMessage("jugador pierde, redireccion a gameover handler........");
+        } else {
+            // jugador Gana
             battleService.resetGame();
-                // ir al handler de game over
+            consoleUI.showMessage("jugador gana, redireccion a reward handler........");
+        }
 
     }
 

@@ -1,9 +1,7 @@
 package com.rpg.combat.domain.services;
 
+import com.rpg.combat.domain.models.*;
 import com.rpg.combat.domain.models.Character;
-import com.rpg.combat.domain.models.Enemy;
-import com.rpg.combat.domain.models.Game;
-import com.rpg.combat.domain.models.PlayerCharacter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +15,13 @@ public class BattleService {
     private boolean isAllEnemyDefeated;
     private boolean isPlayerDefeated;
 
+    public boolean isAllEnemyDefeated() {
+        return isAllEnemyDefeated;
+    }
+
+    public boolean isPlayerDefeated() {
+        return isPlayerDefeated;
+    }
 
     public void setCurrentGame(Game game){
         this.currentGame = game;
@@ -27,7 +32,7 @@ public class BattleService {
     }
 
     public boolean IsTheBattleOver(){
-        List<Enemy> enemyList = currentGame.getEnemyList();
+        List<Enemy> enemyList = currentGame.getEnemies();
         List<PlayerCharacter> playerCharacters = Arrays.asList(currentGame.getPlayerCharacter());
 
         int enemiesDefeated = 0;
@@ -63,7 +68,7 @@ public class BattleService {
     }
 
     public List<Character> getTurnList(){
-        List<Enemy> enemyList = currentGame.getEnemyList();
+        List<Enemy> enemyList = currentGame.getEnemies();
         List<PlayerCharacter> playerCharacters = Arrays.asList(currentGame.getPlayerCharacter());
         List<Character> turnList = new ArrayList<>();
         for (int i = 0; i < playerCharacters.size(); i++) {
@@ -74,9 +79,5 @@ public class BattleService {
         }
         return turnList;
     }
-
-
-
-
 
 }

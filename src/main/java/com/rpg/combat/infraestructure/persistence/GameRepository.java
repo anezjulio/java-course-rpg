@@ -61,6 +61,14 @@ public class GameRepository {
                         items
                 );
 
+        Move dano = new Move(30, SkillType.DAMAGE);
+        Move curar = new Move(30, SkillType.HEAL);
+
+        //Action action = new Action();
+
+        //Event event = new Event(dagger)
+
+
         Game partidaDePrueba = new Game(
                 //Crea una fecha con la hora, dia, minuto,segundo actual
                 LocalDateTime.now(),

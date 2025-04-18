@@ -16,11 +16,6 @@ public class Action {
         this.move = move;
     }
 
-
-    public String getCharacter() {
-        String Character = "";
-        return Character;
-    }
     public Move getMove() {
         return move;
     }
