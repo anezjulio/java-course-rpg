@@ -12,12 +12,20 @@ import java.util.List;
 
 public class NewProfileHandler implements Handler {
 
+    private final BattleHandler battleHandler;
     private final NewProfileScreen newProfileScreen;
     private final ConsoleInput consoleInput;
     private final ConsoleUI consoleUI;
     private final PlayerCharacterRepository playerCharacterRepository;
 
-    public NewProfileHandler(NewProfileScreen newProfileScreen, ConsoleInput consoleInput, ConsoleUI consoleUI, PlayerCharacterRepository playerCharacterRepository) {
+    public NewProfileHandler(
+            BattleHandler battleHandler,
+            NewProfileScreen newProfileScreen,
+            ConsoleInput consoleInput,
+            ConsoleUI consoleUI,
+            PlayerCharacterRepository playerCharacterRepository
+    ) {
+        this.battleHandler = battleHandler;
         this.newProfileScreen = newProfileScreen;
         this.consoleInput = consoleInput;
         this.consoleUI = consoleUI;
@@ -26,7 +34,6 @@ public class NewProfileHandler implements Handler {
 
     @Override
     public void execute() {
-
         consoleUI.cls();
         List<PlayerCharacter> playerCharacterList = playerCharacterRepository.getplayerCharacterslist();
         newProfileScreen.LoadPlayerCharacters(playerCharacterList);
@@ -37,19 +44,15 @@ public class NewProfileHandler implements Handler {
         consoleUI.showOptions(
                 newProfileScreen.getOptions()
         );
-
         int selectedOpcion = consoleInput.read();
-
         if (selectedOpcion == playerCharacterList.size() + 1) {
             System.out.println("returning to menu selection... ... ...");
             MenuHandler menuHandler = Main.getMenuHandler();
             menuHandler.execute();
         }
-
         if (selectedOpcion >= 1 && selectedOpcion < playerCharacterList.size() + 1) {
             System.out.println("escogiste : " + selectedOpcion);
         }
-
         if (selectedOpcion >= 1 && selectedOpcion <= playerCharacterList.size()) {
             consoleUI.cls();
             System.out.println("nombre del jugador: " + username);
@@ -57,12 +60,11 @@ public class NewProfileHandler implements Handler {
             System.out.println("heroe selecionado: " + selectedHero.getName());
             consoleUI.showOptions(newProfileScreen.getBeginBattleOption());
         }
-
         int opciondesalida = consoleInput.read();
-
         if (opciondesalida == 1) {
-
             consoleUI.showMessage("batalla capitulo 1 ");
+            BattleHandler battleHandler = Main.getBattleHandler();
+            battleHandler.execute();
         } else if (opciondesalida == 2) {
             consoleUI.showMessage("returning to menu selection... ... ...");
             MenuHandler menuHandler = Main.getMenuHandler();

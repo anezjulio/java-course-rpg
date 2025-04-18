@@ -115,6 +115,7 @@ public class Main {
         if (battleHandler == null) {
             battleHandler = new BattleHandler(
                     getConsoleUI(),
+                    getConsoleInput(),
                     getBattleService(),
                     getBattleScreen()
             );
@@ -139,6 +140,7 @@ public class Main {
     public static NewProfileHandler getNewProfileHandler() {
         if (newProfileHandler == null) {
             newProfileHandler = new NewProfileHandler(
+                    getBattleHandler(),
                     getNewProfileScreen(),
                     getConsoleInput(),
                     getConsoleUI(),
