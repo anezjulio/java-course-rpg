@@ -56,8 +56,8 @@ public class MenuHandler implements Handler {
             }
             // opcion 3 Credits
             case 3: {
-                // CreditsHandler
-                System.out.println("CreditsHandler, Proximamente.......");
+                CreditsHandler creditshandler = Main.getCreditsHandler();
+                creditshandler.execute();
                 break;
             }
             // opcion 4 exit

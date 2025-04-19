@@ -1,15 +1,43 @@
 package com.rpg.combat.domain.models;
 
-import com.rpg.combat.domain.constants.Chapter;
-
+// Un evento ejecuta una accion, teniendo en cuenta que el "playerTurn" ejecutara una "accion" sobre "target"
 public class Event {
 
-    private Chapter chapter;
-    private int turn;
+    private Action action;
     private Character playerTurn;
     private Character target;
-    private Action action;
 
-    // Un evento ejecuta una accion, teniendo en cuenta que el "playerTurn" ejecutara una "accion" sobre "target"
+    public Event(Action action, Character playerTurn, Character target) {
+        this.action = action;
+        this.playerTurn = playerTurn;
+        this.target = target;
+    }
 
+    public Action getAction() {
+        return action;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
+    }
+
+    public Character getPlayerTurn() {
+        return playerTurn;
+    }
+
+    public void setPlayerTurn(Character playerTurn) {
+        this.playerTurn = playerTurn;
+    }
+
+    public Character getTarget() {
+        return target;
+    }
+
+    public void setTarget(Character target) {
+        this.target = target;
+    }
+
+    public String toString(){
+        return playerTurn.getName() + " : " + action.getMoveType() + " " + action.getAmount() + " -> " + target.getName() ;
+    }
 }

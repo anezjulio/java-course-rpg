@@ -1,6 +1,6 @@
 package com.rpg.combat.domain.constants;
 
-public enum SkillType {
+public enum MoveType {
     DAMAGE,
     HEAL
 }
