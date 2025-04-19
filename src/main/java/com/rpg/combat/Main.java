@@ -7,6 +7,7 @@ import com.rpg.combat.infraestructure.input.ConsoleInput;
 import com.rpg.combat.infraestructure.output.ConsoleUI;
 import com.rpg.combat.infraestructure.output.GameScreenManager;
 import com.rpg.combat.infraestructure.output.screen.*;
+import com.rpg.combat.infraestructure.persistence.EnemyRepository;
 import com.rpg.combat.infraestructure.persistence.GameRepository;
 import com.rpg.combat.infraestructure.persistence.PlayerCharacterRepository;
 
@@ -28,6 +29,7 @@ public class Main {
 
     private static GameRepository gameRepository;
     private static PlayerCharacterRepository playerCharacterRepository;
+    private static EnemyRepository enemyRepository;
 
     private static ConsoleInput consoleInput;
     private static ConsoleUI consoleUI;
@@ -136,11 +138,12 @@ public class Main {
     public static NewProfileHandler getNewProfileHandler() {
         if (newProfileHandler == null) {
             newProfileHandler = new NewProfileHandler(
-                    getBattleHandler(),
+                    getBattleService(),
                     getNewProfileScreen(),
                     getConsoleInput(),
                     getConsoleUI(),
-                    getPlayerCharacterRepository()
+                    getPlayerCharacterRepository(),
+                    getEnemyRepository()
             );
 
         }
@@ -170,7 +173,12 @@ public class Main {
         }
         return creditsHandler;
     }
-
+    public static EnemyRepository getEnemyRepository() {
+        if (enemyRepository == null) {
+            enemyRepository = new EnemyRepository();
+        }
+        return enemyRepository;
+    }
 
 }
 

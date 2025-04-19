@@ -2,38 +2,49 @@ package com.rpg.combat.application.handler;
 
 
 import com.rpg.combat.Main;
+import com.rpg.combat.domain.constants.Chapter;
+import com.rpg.combat.domain.models.Enemy;
+import com.rpg.combat.domain.models.Game;
 import com.rpg.combat.domain.models.PlayerCharacter;
+import com.rpg.combat.domain.services.BattleService;
 import com.rpg.combat.infraestructure.input.ConsoleInput;
 import com.rpg.combat.infraestructure.output.ConsoleUI;
 import com.rpg.combat.infraestructure.output.screen.NewProfileScreen;
+import com.rpg.combat.infraestructure.persistence.EnemyRepository;
 import com.rpg.combat.infraestructure.persistence.PlayerCharacterRepository;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class NewProfileHandler implements Handler {
 
-    private final BattleHandler battleHandler;
+    private final BattleService battleService;
     private final NewProfileScreen newProfileScreen;
     private final ConsoleInput consoleInput;
     private final ConsoleUI consoleUI;
     private final PlayerCharacterRepository playerCharacterRepository;
-
+    private final EnemyRepository enemyRepository;
     public NewProfileHandler(
-            BattleHandler battleHandler,
+            BattleService battleService,
             NewProfileScreen newProfileScreen,
             ConsoleInput consoleInput,
             ConsoleUI consoleUI,
-            PlayerCharacterRepository playerCharacterRepository
+            PlayerCharacterRepository playerCharacterRepository,
+            EnemyRepository enemyRepository
     ) {
-        this.battleHandler = battleHandler;
+        this.battleService = battleService;
         this.newProfileScreen = newProfileScreen;
         this.consoleInput = consoleInput;
         this.consoleUI = consoleUI;
         this.playerCharacterRepository = playerCharacterRepository;
+        this.enemyRepository = enemyRepository;
     }
 
     @Override
     public void execute() {
+        PlayerCharacter selectedHero = null;
+
         consoleUI.cls();
         List<PlayerCharacter> playerCharacterList = playerCharacterRepository.getplayerCharacterslist();
         newProfileScreen.LoadPlayerCharacters(playerCharacterList);
@@ -44,25 +55,26 @@ public class NewProfileHandler implements Handler {
         consoleUI.showOptions(
                 newProfileScreen.getOptions()
         );
-        int selectedOpcion = consoleInput.read();
-        if (selectedOpcion == playerCharacterList.size() + 1) {
+        int seletecPlayerCharacter = consoleInput.read();
+        if (seletecPlayerCharacter == playerCharacterList.size() + 1) {
             System.out.println("returning to menu selection... ... ...");
             MenuHandler menuHandler = Main.getMenuHandler();
             menuHandler.execute();
         }
-        if (selectedOpcion >= 1 && selectedOpcion < playerCharacterList.size() + 1) {
-            System.out.println("escogiste : " + selectedOpcion);
+        if (seletecPlayerCharacter >= 1 && seletecPlayerCharacter < playerCharacterList.size() + 1) {
+            System.out.println("escogiste : " + seletecPlayerCharacter);
         }
-        if (selectedOpcion >= 1 && selectedOpcion <= playerCharacterList.size()) {
+        if (seletecPlayerCharacter >= 1 && seletecPlayerCharacter <= playerCharacterList.size()) {
             consoleUI.cls();
             System.out.println("nombre del jugador: " + username);
-            PlayerCharacter selectedHero = playerCharacterList.get(selectedOpcion - 1);
+            selectedHero = playerCharacterList.get(seletecPlayerCharacter - 1);
             System.out.println("heroe selecionado: " + selectedHero.getName());
             consoleUI.showOptions(newProfileScreen.getBeginBattleOption());
         }
         int opciondesalida = consoleInput.read();
         if (opciondesalida == 1) {
             consoleUI.showMessage("batalla capitulo 1 ");
+            battleService.setCurrentGame(newGame(username,selectedHero));
             BattleHandler battleHandler = Main.getBattleHandler();
             battleHandler.execute();
         } else if (opciondesalida == 2) {
@@ -73,4 +85,17 @@ public class NewProfileHandler implements Handler {
 
         }
     }
+    private Game newGame(String username, PlayerCharacter selectedHero){
+        return new Game(
+                username,
+                0,
+                0,
+                selectedHero,
+                enemyRepository.getEnemies(),
+                Chapter.SECOND,
+                new ArrayList<>(),
+                null);
+
+    }
+
 }

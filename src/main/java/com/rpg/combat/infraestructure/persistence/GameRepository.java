@@ -99,7 +99,6 @@ public class GameRepository {
 
         Game partidaDePrueba = new Game(
                 //Crea una fecha con la hora, dia, minuto,segundo actual
-                LocalDateTime.now(),
                 "wolfcross",
                 0,
                 0,
@@ -111,7 +110,6 @@ public class GameRepository {
 
         Game partidaDePrueba2 = new Game(
                 //Crea una fecha con la hora, dia, minuto,segundo actual
-                LocalDateTime.now(),
                 "dulceDeGuayaba",
                 0,
                 0,
