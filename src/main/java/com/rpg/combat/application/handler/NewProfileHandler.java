@@ -92,7 +92,7 @@ public class NewProfileHandler implements Handler {
                 0,
                 selectedHero,
                 enemyRepository.getEnemies(),
-                Chapter.SECOND,
+                Chapter.PROLOGUE,
                 new ArrayList<>(),
                 null);
 
