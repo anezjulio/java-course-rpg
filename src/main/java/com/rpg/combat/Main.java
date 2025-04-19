@@ -1,18 +1,12 @@
 package com.rpg.combat;
 
 
-import com.rpg.combat.application.handler.BattleHandler;
-import com.rpg.combat.application.handler.ContinueHandler;
-import com.rpg.combat.application.handler.MenuHandler;
-import com.rpg.combat.application.handler.NewProfileHandler;
+import com.rpg.combat.application.handler.*;
 import com.rpg.combat.domain.services.BattleService;
 import com.rpg.combat.infraestructure.input.ConsoleInput;
 import com.rpg.combat.infraestructure.output.ConsoleUI;
 import com.rpg.combat.infraestructure.output.GameScreenManager;
-import com.rpg.combat.infraestructure.output.screen.BattleScreen;
-import com.rpg.combat.infraestructure.output.screen.ContinueScreen;
-import com.rpg.combat.infraestructure.output.screen.MenuScreen;
-import com.rpg.combat.infraestructure.output.screen.NewProfileScreen;
+import com.rpg.combat.infraestructure.output.screen.*;
 import com.rpg.combat.infraestructure.persistence.GameRepository;
 import com.rpg.combat.infraestructure.persistence.PlayerCharacterRepository;
 
@@ -23,11 +17,14 @@ public class Main {
     private static ContinueHandler continueHandler;
     private static NewProfileHandler newProfileHandler;
     private static BattleHandler battleHandler;
+    private static CreditsHandler creditsHandler;
 
     private static MenuScreen menuScreen;
     private static ContinueScreen continueScreen;
     private static NewProfileScreen newProfileScreen;
     private static BattleScreen battleScreen;
+    private static CreditsScreen creditsScreen;
+
 
     private static GameRepository gameRepository;
     private static PlayerCharacterRepository playerCharacterRepository;
@@ -159,6 +156,21 @@ public class Main {
         }
         return battleScreen;
     }
+
+    private static CreditsScreen getCreditsScreen() {
+        if (creditsScreen == null) {
+            creditsScreen = new CreditsScreen(getConsoleUI());
+        }
+        return creditsScreen;
+    }
+
+    public static CreditsHandler getCreditsHandler() {
+        if (creditsHandler == null) {
+            creditsHandler= new CreditsHandler(getCreditsScreen(), getConsoleInput(), getConsoleUI());
+        }
+        return creditsHandler;
+    }
+
 
 }
 
