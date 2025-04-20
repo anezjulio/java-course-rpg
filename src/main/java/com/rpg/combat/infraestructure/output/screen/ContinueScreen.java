@@ -31,7 +31,6 @@ public class ContinueScreen implements Screen {
                 "",
                 "<listaDePartidas>",
                 "",
-
         };
         return template;
     }

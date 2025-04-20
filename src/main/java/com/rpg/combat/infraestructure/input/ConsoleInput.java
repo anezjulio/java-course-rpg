@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ConsoleInput {
 
     // por defecto es 10
-    private final int DEFAULT_MAX_OPTIONS_AMOUNT= 10;
+    private final int DEFAULT_MAX_OPTIONS_AMOUNT= 9;
     private final int DEFAULT_MIN_OPTIONS_AMOUNT= 1;
     private final String DEFAULT_RETRY_MESSAGE= "intente de nuevo.";
 
