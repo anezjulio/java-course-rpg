@@ -12,7 +12,11 @@ import com.rpg.combat.infraestructure.output.screen.MenuScreen;
 import com.rpg.combat.infraestructure.output.screen.NewProfileScreen;
 import com.rpg.combat.infraestructure.persistence.GameRepository;
 import com.rpg.combat.infraestructure.persistence.PlayerCharacterRepository;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
+@SpringBootApplication
 public class Main {
 
     // Declare dependencies
@@ -31,6 +35,7 @@ public class Main {
     private static ConsoleUI consoleUI;
 
     public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
 
         GameScreenManager gameScreenManager = new GameScreenManager(getMenuHandler());
         gameScreenManager.startGame();
