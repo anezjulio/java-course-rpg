@@ -1,42 +1,30 @@
 package com.rpg.combat.domain.models;
 
+import com.rpg.combat.domain.constants.MoveType;
+
 public class Action {
 
-    // messaje = target.name, move.skillType, target HP
-    //         = soldado recibio 40 damage
-    //         = soldado se curo 40 hp
+    private MoveType moveType;
+    private int amount;
 
-    private String message;
-    private Character target;
-    private Move move;
-
-    public Action(String message,Character target,Move move) {
-        this.message = message;
-        this.target = target;
-        this.move = move;
+    public Action(int amount, MoveType moveType) {
+        this.amount = amount;
+        this.moveType = moveType;
     }
 
-
-    public String getCharacter() {
-        String Character = "";
-        return Character;
-    }
-    public Move getMove() {
-        return move;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setMove(Move move) {
-        this.move = move;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
+    public MoveType getMoveType() {
+        return moveType;
+    }
 
-    // ejecutar accion
-    /*
-    *
-    *
-    *
-    *
-    *
-    * */
-
+    public void setMoveType(MoveType moveType) {
+        this.moveType = moveType;
+    }
 }

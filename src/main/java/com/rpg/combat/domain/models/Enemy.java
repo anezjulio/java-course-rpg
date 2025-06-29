@@ -22,4 +22,18 @@ public class Enemy extends Character {
         super(name, role, level, experience, damage, hpCurrent, hpMax, mpCurrent, mpMax, skills, items);
     }
 
+    public Enemy(Enemy enemy) {
+        super(
+                enemy.getName(),
+                enemy.getRole(),
+                enemy.getLevel(),
+                enemy.getExperience(),
+                enemy.getDamage(),
+                enemy.getHpCurrent(),
+                enemy.getHpMax(),
+                enemy.getMpCurrent(),
+                enemy.getMpMax(),
+                enemy.getSkills(),
+                enemy.getItems());
+    }
 }

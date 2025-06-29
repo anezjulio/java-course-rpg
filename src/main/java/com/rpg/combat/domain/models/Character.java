@@ -75,4 +75,21 @@ public class Character {
     public List<Item> getItems() {
         return items;
     }
+
+    public void doDamage(int damage){
+        if (damage > this.hpCurrent){
+            this.hpCurrent = 0;
+        }else {
+            this.hpCurrent = this.hpCurrent - damage;
+        }
+    }
+
+    public void doHeal(int heal){
+        if (hpCurrent + heal > this.hpMax){
+            this.hpCurrent = this.hpMax;
+        }else {
+            this.hpCurrent = this.hpCurrent + heal;
+        }
+    }
+
 }

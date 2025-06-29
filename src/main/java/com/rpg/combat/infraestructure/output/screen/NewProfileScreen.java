@@ -64,9 +64,7 @@ public class NewProfileScreen implements Screen {
     @Override
     public void show() {
         consoleUI.cls();
-
         consoleUI.showTemplate(getTemplate());
-
     }
 
     public void showPlayerList(){

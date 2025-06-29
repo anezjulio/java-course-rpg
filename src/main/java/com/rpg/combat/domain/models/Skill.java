@@ -1,14 +1,15 @@
 package com.rpg.combat.domain.models;
 
-import com.rpg.combat.domain.constants.SkillType;
+import com.rpg.combat.domain.constants.MoveType;
 
-public class Skill extends Move {
+public class Skill extends Action {
+
     private String name;
     private String description;
     private int manaRequired;
 
-    public Skill(int amount, SkillType skillType, String name, String description, int manaRequired) {
-        super(amount, skillType);
+    public Skill(int amount, MoveType moveType, String name, String description, int manaRequired) {
+        super(amount, moveType);
         this.name = name;
         this.description = description;
         this.manaRequired = manaRequired;

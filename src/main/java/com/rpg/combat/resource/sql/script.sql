@@ -1,0 +1,1 @@
+insert into items(id_item,name,description,useAmount) values (1,"sword","golder sword",100);
