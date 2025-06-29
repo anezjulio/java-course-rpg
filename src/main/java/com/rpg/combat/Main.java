@@ -10,7 +10,11 @@ import com.rpg.combat.infraestructure.output.screen.*;
 import com.rpg.combat.infraestructure.persistence.EnemyRepository;
 import com.rpg.combat.infraestructure.persistence.GameRepository;
 import com.rpg.combat.infraestructure.persistence.PlayerCharacterRepository;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
+@SpringBootApplication
 public class Main {
 
     // Declare dependencies
@@ -37,6 +41,7 @@ public class Main {
     private static BattleService battleService;
 
     public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
         GameScreenManager gameScreenManager = new GameScreenManager(getMenuHandler());
         gameScreenManager.startGame();
     }
