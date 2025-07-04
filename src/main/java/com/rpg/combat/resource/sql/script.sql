@@ -97,3 +97,25 @@ CREATE TABLE IF NOT EXISTS SessionEvents (
     FOREIGN KEY (session_id) REFERENCES GameSession(session_id),
     FOREIGN KEY (event_id) REFERENCES Event(event_id)
     );
+
+
+
+
+INSERT INTO Item (name, description, use_amount, move_type) VALUES
+('sword', 'normal sword', 11, 'DAMAGE'),
+('dagger', 'normal dagger', 15, 'DAMAGE');
+
+INSERT INTO Skill (mana_required, move_type, name, description, amount) VALUES
+(15, 'DAMAGE', 'fireball', 'shot a fireball', 30),
+(20, 'DAMAGE', 'thunderbolt', 'shot a thunderbolt', 50),
+(50, 'HEAL', 'Heal', 'Heal', 50);
+
+
+INSERT INTO Enemy (name, role, level, experience_reward, damage, hp_max, mp_max) VALUES
+('PudgeSinBlink', 'WARRIOR', 0, 100, 50, 290, 300),
+('VisageMiguel', 'MAGE', 0, 200, 60, 290, 400);
+
+
+INSERT INTO PlayerCharacter (name, role, level, experience, next_level_experience, damage, hp_max, hp_current, mp_max, mp_current) VALUES
+('Miguel', 'MAGE', 0, 0, 200, 11, 100, 100, 100, 100),
+('ñemo', 'WARRIOR', 0, 0, 200, 11, 100, 100, 100, 100);
