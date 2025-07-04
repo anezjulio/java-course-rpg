@@ -98,17 +98,18 @@ CREATE TABLE IF NOT EXISTS SessionEvents (
     FOREIGN KEY (event_id) REFERENCES Event(event_id)
     );
 
-
-
-
 INSERT INTO Item (name, description, use_amount, move_type) VALUES
 ('sword', 'normal sword', 11, 'DAMAGE'),
+('greatSword', 'great sword', 26, 'DAMAGE'),
+('biggestGreatSword', 'biggest great sword', 50, 'DAMAGE'),
+('giganticSword', 'gigantic sword', 120, 'DAMAGE'),
 ('dagger', 'normal dagger', 15, 'DAMAGE');
 
 INSERT INTO Skill (mana_required, move_type, name, description, amount) VALUES
 (15, 'DAMAGE', 'fireball', 'shot a fireball', 30),
 (20, 'DAMAGE', 'thunderbolt', 'shot a thunderbolt', 50),
-(50, 'HEAL', 'Heal', 'Heal', 50);
+(50, 'HEAL', 'Heal', 'Heal', 50),
+(90, 'HEAL', 'aChunkOfHeal', 'Heal', 200);
 
 
 INSERT INTO Enemy (name, role, level, experience_reward, damage, hp_max, mp_max) VALUES
